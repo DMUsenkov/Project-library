@@ -1,0 +1,34 @@
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/Users/dmitriy/Library/library_project
+
+  web:
+    build: .
+    command: python run.py
+    volumes:
+      - .:/app
+    ports:
+      - "5005:5005"
+    depends_on:
+      - db
+
+  mockserver:
+    image: mockserver/mockserver
+    ports:
+      - "1080:1080"
+    environment:
+      MOCKSERVER_INITIALIZATION_JSON_PATH: /config/initializerJson.json
+      MOCKSERVER_LOG_LEVEL: INFO
+    volumes:
+      - ./config:/config
+
+volumes:
+  postgres_data:
