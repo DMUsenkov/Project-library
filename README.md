@@ -20,10 +20,10 @@
   - Тело запроса:
     ```json
     {
-      "username": "john_doe",
+      "username": "User",
       "password": "password123",
-      "email": "john@example.com",
-      "role": "user"
+      "email": "user@mail.ru",
+      "role": "admin"
     }
     ```
   - Ответы:
@@ -35,7 +35,7 @@
   - Тело запроса:
     ```json
     {
-      "username": "john_doe",
+      "username": "User",
       "password": "password123"
     }
     ```
@@ -132,7 +132,7 @@ library-management-system/
 │   ├── routes.py
 │   │── auth.py
 │   ├── utils.py
-│   └─── config.py
+│   └── config.py
 │
 ├── run.py
 │   
